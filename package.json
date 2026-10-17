@@ -1,0 +1,32 @@
+{
+  "name": "hirematch",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-powered job matching platform using Next.js, Express, Supabase pgvector, and BullMQ",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "scripts"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "seed": "npm run seed --workspace=scripts",
+    "eval": "ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" eval/evaluate_search.ts",
+    "clean": "npm run clean --workspaces --if-present"
+  },
+  "keywords": [
+    "job-matching",
+    "pgvector",
+    "hybrid-search",
+    "supabase",
+    "bullmq",
+    "nextjs",
+    "express"
+  ],
+  "author": "HireMatch Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
