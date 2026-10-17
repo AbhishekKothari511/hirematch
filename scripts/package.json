@@ -1,0 +1,26 @@
+{
+  "name": "@hirematch/scripts",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "seed": "ts-node src/seed-jobs.ts",
+    "test:api": "ts-node src/test-api.ts",
+    "test:worker": "ts-node src/test-queue-worker.ts",
+    "test:matches": "ts-node src/test-matches-llm.ts",
+    "test:web": "ts-node src/test-web-ssr.ts",
+    "generate-data": "ts-node src/generate-jobs-dataset.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hirematch/shared": "*",
+    "@supabase/supabase-js": "^2.45.4",
+    "dotenv": "^16.4.5",
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.12",
+    "@types/pg": "^8.11.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
