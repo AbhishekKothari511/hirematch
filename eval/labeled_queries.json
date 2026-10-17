@@ -1,0 +1,87 @@
+[
+  {
+    "id": "eval-q1",
+    "query": "Full Stack Engineer Next.js React TypeScript PostgreSQL",
+    "notes": "Queries full stack positions requiring modern web technologies and relational databases",
+    "relevant_job_ids": [
+      "5b7290b6-9590-40c4-98da-9d8f89e86404",
+      "f3b873c2-1a41-4589-bfb1-e11bd9e2dada",
+      "1f92cc9e-f73a-4da8-82b8-acd132c83417",
+      "ace0175b-bc52-4add-9997-175ec85e6fc6",
+      "900691c4-7434-4fed-95b7-04ee5439ad16",
+      "152310f8-dc26-4889-90bf-964c53e0e092",
+      "6b909020-8cdb-4174-bea1-aa3001850237",
+      "f5a3d505-2dd5-44fa-b714-f48367495094",
+      "f5a7ccd9-b290-45c3-9f8e-01575a8ccc43",
+      "e886758d-0f88-4893-99de-929465a557ff"
+    ]
+  },
+  {
+    "id": "eval-q2",
+    "query": "AI Machine Learning Engineer PyTorch LLM pgvector",
+    "notes": "Queries roles in AI foundation models, vector databases, and embeddings",
+    "relevant_job_ids": [
+      "3b71be39-6bf5-43ee-9956-5a0e55d23df6",
+      "62102881-61b9-4553-a1e1-1470f0808730",
+      "d5245bb2-2c49-4d77-90fd-6bb26f72cf56",
+      "ed3e1757-d63b-41de-ac4c-bc6a910b0e4e",
+      "d90c5780-cdd7-4951-9ffe-2a2bde76518c",
+      "ee41cf74-52a2-4275-899e-b899702cedac",
+      "a550a883-ed5b-429d-b4b6-5bf130435d8e",
+      "a2b417f3-8ec0-48cd-b5a6-06aef1773ccf",
+      "fd77e27b-b3d2-44bd-acdf-4f74f44d9dec",
+      "0368daeb-ad1c-4c8a-aa17-86fcee3d630d"
+    ]
+  },
+  {
+    "id": "eval-q3",
+    "query": "Cloud Infrastructure DevOps AWS Kubernetes Terraform",
+    "notes": "Queries infrastructure, cloud architecture, container orchestration, and IaC",
+    "relevant_job_ids": [
+      "865e4718-5019-4c38-a804-f06d0b544f28",
+      "a13151e5-bb94-4c3a-93de-296900a5611b",
+      "6f3ef996-09ef-4ab2-a215-de011e02a297",
+      "3012bce0-8a44-4d2b-9f49-945a95df012f",
+      "40708b8d-7a7b-4665-91a6-7b34a22fc31d",
+      "188ad5b8-17ea-4793-8320-00790424774b",
+      "33ab143e-7319-4f71-bf72-b1ea476f3c47",
+      "49dac1e9-a49a-4e72-a814-0a909be79e4d",
+      "e47485fc-9802-49d1-b461-7ff2f1980476",
+      "f61a4bf9-8221-4610-9101-3788919f224e"
+    ]
+  },
+  {
+    "id": "eval-q4",
+    "query": "Data Engineer Python Snowflake Spark Airflow",
+    "notes": "Queries data warehouse pipelines, ETL workflows, and distributed data processing",
+    "relevant_job_ids": [
+      "e10e6a5c-b547-4fca-9fd6-de4fedd0dfc0",
+      "70e716df-5ffd-4be8-be64-4a666d2050fc",
+      "15e5411c-e314-46ca-8b58-32aaea2e4c63",
+      "e2cd316b-d8a3-4cad-af2d-d82140d9511f",
+      "984ca05c-10a2-41d9-832a-0a9e5d8af20b",
+      "da9f6996-c4c3-4197-8c4b-50e3e54aba60",
+      "7c01a26c-9e06-47a0-914f-d3ce33935018",
+      "09b04d29-8fa5-4aca-ac12-e7af02b66a89",
+      "a2270706-d98d-4195-8a93-ee68f72852d7",
+      "21b7facf-7236-4da0-8e46-a5f3d6458160"
+    ]
+  },
+  {
+    "id": "eval-q5",
+    "query": "Mobile Developer React Native iOS Android Swift",
+    "notes": "Queries cross-platform and native mobile software engineering roles",
+    "relevant_job_ids": [
+      "f3b873c2-1a41-4589-bfb1-e11bd9e2dada",
+      "900691c4-7434-4fed-95b7-04ee5439ad16",
+      "f5a3d505-2dd5-44fa-b714-f48367495094",
+      "2026fc4f-ce5e-4d30-b0da-85e68058dce3",
+      "e79d6b4d-f78d-45bc-829f-81fd231fc147",
+      "ae5761e1-886f-4f07-bd81-ccea519da906",
+      "20edc9b9-3544-42ed-b009-61f5903dce7b",
+      "46d467ba-0bd4-4545-a909-64ae39428966",
+      "3d5ddca7-0aba-424b-839e-8190f0121f21",
+      "ab28decf-d6e3-4d64-b8b6-d1c22c0988fa"
+    ]
+  }
+]
