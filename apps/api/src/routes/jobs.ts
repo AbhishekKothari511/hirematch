@@ -1,4 +1,6 @@
 import { Router, Request, Response } from 'express';
+import fs from 'fs';
+import path from 'path';
 import {
   createJobSchema,
   updateJobSchema,
@@ -9,6 +11,26 @@ import { validateBody, validateQuery } from '../middleware/validate';
 import { getSupabaseClient, getServiceRoleClient } from '../services/supabaseService';
 
 const router = Router();
+
+function getLocalSeedJobs(): any[] {
+  try {
+    const candidates = [
+      path.resolve(__dirname, '../../../../scripts/seed-data/jobs.json'),
+      path.resolve(process.cwd(), '../../scripts/seed-data/jobs.json'),
+      path.resolve(process.cwd(), 'scripts/seed-data/jobs.json'),
+      'c:/Users/Abhishek Kothari/Downloads/Projects/hirematch/scripts/seed-data/jobs.json',
+    ];
+    for (const p of candidates) {
+      if (fs.existsSync(p)) {
+        const data = JSON.parse(fs.readFileSync(p, 'utf8'));
+        return data.jobs || [];
+      }
+    }
+  } catch {
+    // fallback failsafe
+  }
+  return [];
+}
 
 /**
  * GET /api/jobs
@@ -71,7 +93,49 @@ router.get(
       const { data: jobs, error, count } = await dbQuery;
 
       if (error) {
-        res.status(500).json({ error: 'Database Error', message: error.message });
+        // Fallback to local seed jobs (populated by JobGraph or HireMatch seed)
+        const seedJobs = getLocalSeedJobs();
+        let filtered = seedJobs;
+        if (query && query.trim() !== '') {
+          const q = query.toLowerCase();
+          filtered = filtered.filter((j: any) =>
+            (j.title && j.title.toLowerCase().includes(q)) ||
+            (j.company && j.company.toLowerCase().includes(q)) ||
+            (j.description && j.description.toLowerCase().includes(q))
+          );
+        }
+        if (jobType) {
+          filtered = filtered.filter((j: any) => (j.job_type || j.jobType) === jobType);
+        }
+        if (experienceLevel) {
+          filtered = filtered.filter((j: any) => (j.experience_level || j.experienceLevel) === experienceLevel);
+        }
+        if (location) {
+          const loc = location.toLowerCase();
+          filtered = filtered.filter((j: any) => j.location && j.location.toLowerCase().includes(loc));
+        }
+        if (skills) {
+          const skillsArray = Array.isArray(skills) ? skills : [skills];
+          filtered = filtered.filter((j: any) =>
+            Array.isArray(j.skills) && skillsArray.some((s: string) => j.skills.includes(s))
+          );
+        }
+
+        const total = filtered.length;
+        const totalPages = Math.ceil(total / limit);
+        const paginated = filtered.slice(offset, offset + limit);
+
+        res.json({
+          data: paginated,
+          pagination: {
+            page,
+            limit,
+            total,
+            totalPages,
+            hasNextPage: page < totalPages,
+            hasPrevPage: page > 1,
+          },
+        });
         return;
       }
 
@@ -111,6 +175,12 @@ router.get('/:id', optionalAuth, async (req: Request, res: Response): Promise<vo
       .single();
 
     if (error || !job) {
+      const seedJobs = getLocalSeedJobs();
+      const localJob = seedJobs.find((j: any) => j.id === id);
+      if (localJob) {
+        res.json({ data: localJob });
+        return;
+      }
       res.status(404).json({ error: 'Not Found', message: `Job with ID '${id}' not found` });
       return;
     }

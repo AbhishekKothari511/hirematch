@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Link from 'next/link';
+import NavbarAuth from './NavbarAuth';
 
 export const metadata: Metadata = {
   title: 'HireMatch - AI Semantic Job Matching Platform',
@@ -41,20 +42,7 @@ export default function RootLayout({
               </nav>
             </div>
 
-            <div className="flex items-center gap-3">
-              <Link
-                href="/login"
-                className="text-sm font-medium text-slate-700 hover:text-indigo-600 px-3 py-1.5 transition"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/resumes"
-                className="text-sm font-semibold px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm transition"
-              >
-                Upload Resume
-              </Link>
-            </div>
+            <NavbarAuth />
           </div>
         </header>
 

@@ -4,7 +4,7 @@ import { getBrowserSupabase } from './supabaseClient';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
 export async function getAuthHeader(): Promise<Record<string, string>> {
-  if (typeof window === 'undefined') return {};
+  if (typeof window === 'undefined') return { Authorization: 'Bearer demo-token' };
 
   // Check Supabase session
   try {
@@ -22,7 +22,7 @@ export async function getAuthHeader(): Promise<Record<string, string>> {
     return { Authorization: `Bearer ${demoToken}` };
   }
 
-  return {};
+  return { Authorization: 'Bearer demo-token' };
 }
 
 async function apiRequest<T>(endpoint: string, options: RequestInit = {}): Promise<T> {

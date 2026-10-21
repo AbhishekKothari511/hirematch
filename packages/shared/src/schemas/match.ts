@@ -21,7 +21,7 @@ export const hybridSearchQuerySchema = z.object({
 });
 
 export const resumeMatchQuerySchema = z.object({
-  resumeId: z.string().uuid('Invalid resume UUID'),
+  resumeId: z.string().min(1, 'Resume ID is required'),
   limit: z.coerce.number().int().min(1).max(30).default(10),
   offset: z.coerce.number().int().min(0).default(0),
 });

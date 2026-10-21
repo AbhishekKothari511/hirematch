@@ -53,34 +53,7 @@ function MatchesContent() {
       const res = await getMatches(id);
       setMatches(res.data || []);
     } catch (err: any) {
-      // In offline/demo mode, generate fallback demo matches
-      try {
-        const seedData = require('../../../../scripts/seed-data/jobs.json');
-        const fallbackJobs = seedData.jobs.slice(0, 5);
-        const demoMatches: JobMatch[] = fallbackJobs.map((j: any, i: number) => ({
-          id: `match-demo-${i}`,
-          resumeId: id,
-          jobId: j.id,
-          userId: 'demo-user',
-          similarityScore: 0.94 - i * 0.04,
-          keywordRank: i + 1,
-          vectorRank: i + 2,
-          rrfScore: Number((1.0 / (60 + (i + 1)) + 1.0 / (60 + (i + 2))).toFixed(6)),
-          matchReasons: [
-            `Strong technical overlap: candidate profile demonstrates experience with ${(j.skills || []).slice(0, 3).join(', ')}.`,
-            `Experience level aligns directly with ${j.company}'s requirements for ${j.title}.`,
-            'Demonstrated capability in production full-stack architecture and API reliability.',
-          ],
-          missingSkills: [(j.skills || [])[3] || 'Cloud Deployment (AWS)'],
-          status: 'computed',
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-          job: j,
-        }));
-        setMatches(demoMatches);
-      } catch {
-        setErrorMessage(err.message || 'Failed to load matches');
-      }
+      setErrorMessage(err.message || 'Failed to load matches');
     } finally {
       setLoading(false);
     }
